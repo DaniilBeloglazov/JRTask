@@ -5,7 +5,7 @@ public class Solution {
     public static String[] protosses = new String[5];
     public static String[] terrans = new String[12];
     public static void main (String[] args){
-        fillAll();
+       /* fillAll();
         for (String now : zergs){
             System.out.print(now + " ");
         }
@@ -17,6 +17,7 @@ public class Solution {
         for (String now : terrans){
             System.out.print(now + " ");
         }
+        */
     }
     public static void fillAll(){
         for (int i = 0; i < zergs.length; i++){
