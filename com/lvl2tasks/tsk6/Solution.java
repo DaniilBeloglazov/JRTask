@@ -7,18 +7,15 @@ public class Solution {
     public static void main (String[] args){
         fillAll();
         for (String now : zergs){
-            System.out.print(now);
-            System.out.print(" ");
+            System.out.print(now + " ");
         }
         System.out.println();
         for (String now : protosses){
-            System.out.print(now);
-            System.out.print(" ");
+            System.out.print(now + " ");
         }
         System.out.println();
         for (String now : terrans){
-            System.out.print(now);
-            System.out.print(" ");
+            System.out.print(now + " ");
         }
     }
     public static void fillAll(){
