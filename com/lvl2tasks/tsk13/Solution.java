@@ -1,7 +1,7 @@
 package com.lvl2tasks.tsk13;
 // ROYGBIV
 public class Solution {
-     public static void main(String[] args) {
+     public static void main() {
           Color r = new Color("Red");
           Color o = new Color("Orange");
           Color y = new Color("Yellow");
