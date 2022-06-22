@@ -1,11 +1,9 @@
 package com.lvl1tasks.tsk1;
 
-import  com.lvl1tasks.tsk1.Solution;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
-public class Testing1 {
+public class Testing {
 
     @Test
     public void shouldReturnCorrectValue() {

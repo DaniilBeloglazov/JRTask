@@ -3,7 +3,7 @@ package com.lvl1tasks.tsk2;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class Testing2 {
+public class Testing{
     @Test
     public void test1(){assertEquals(19,Solution.sumDigitsInNumber(289),0);}
     @Test
