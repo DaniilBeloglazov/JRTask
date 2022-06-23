@@ -1,4 +1,4 @@
-package com.lvl3tasks.tsk4;
+package com.lvl3tasks.tsk5;
 import org.junit.Test;
 import org.junit.Before;
 import java.io.ByteArrayOutputStream;
@@ -15,14 +15,14 @@ public class Testing {
 
     @Test
     public void test1() {
-        Solution.addNewCat();
-        assertEquals("1\n", outContent.toString());
-        Solution.catsCount = 0;
+        Solution.setCatsCount(245);
+        System.out.print(Solution.catsCount);
+        assertEquals("245", outContent.toString());
     }
     @Test
     public void test2() {
-        Solution.addNewCat();
-        Solution.addNewCat();
-        assertEquals("1\n2\n", outContent.toString());
+        Solution.setCatsCount(24235);
+        System.out.print(Solution.catsCount);
+        assertEquals("24235", outContent.toString());
     }
 }
