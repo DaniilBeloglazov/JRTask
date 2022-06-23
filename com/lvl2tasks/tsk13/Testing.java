@@ -12,19 +12,9 @@ public class Testing {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
-    @After
-    public void restoreStreams() {
-        System.setOut(originalOut);
-        System.setErr(originalErr);
-    }
     @Test
     public void test1() {
         Solution.main();
         assertEquals("Red Orange Yellow Green Blue Indigo Violet ", outContent.toString());
-    }
-    @Test
-    public void wrongtest1() {
-        Solution.main();
-        assertEquals("Red Orange Yellow Green Blue Indigo Violett", outContent.toString());
     }
 }

@@ -1,13 +1,9 @@
-package com.lvl2tasks.tsk5;
-import org.junit.After;
+package com.lvl2tasks.tsk7;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import static org.junit.Assert.assertEquals;
-
 public class Testing {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -17,7 +13,8 @@ public class Testing {
     }
     @Test
     public void test1() {
-        Solution.outPrnt();
-        assertEquals("850", outContent.toString());
+        Solution.multiply10();
+        assertEquals("3628800", outContent.toString());
     }
 }
+

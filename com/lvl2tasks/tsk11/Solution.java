@@ -3,9 +3,9 @@ import java.lang.*;
 public class Solution {
     public static void main(String[] args){
         String[] test = { "Мама", "Мыла", "Раму"};
-        permute(4, test, "");
+        permute(3, test, "");
     }
-    private static void permute(final int n, final String[] inp, final String currentWord) {
+    public static void permute(int n, String[] inp, String currentWord) {
         if (n == 0) {
             System.out.println(currentWord);
         } else {
