@@ -2,8 +2,8 @@ package com.lvl2tasks.tsk11;
 import java.lang.*;
 public class Solution {
     public static void main(String[] args){
-        String[] test = { "Мама", "Мыла", "Раму" };
-        permute(3, test, "");
+        String[] test = { "Мама", "Мыла", "Раму"};
+        permute(4, test, "");
     }
     private static void permute(final int n, final String[] inp, final String currentWord) {
         if (n == 0) {

@@ -25,7 +25,7 @@ public class Testing {
     }
     @Test
     public void test1() {
-        Solution.outSol();
+        Solution.main();
         assertEquals("DECEMBER 17 2000", outContent.toString());
     }
 }
