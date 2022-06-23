@@ -1,15 +1,18 @@
 package com.lvl2tasks.tsk11;
+import java.lang.*;
 public class Solution {
     public static void main(String[] args){
         String[] test = { "Мама", "Мыла", "Раму" };
-        language(3, test, "");
+        permute(3, test, "");
     }
-    private static void language(final int n, final String[] syllables, final String currentWord) { // example of N = 3
+    private static void permute(final int n, final String[] inp, final String currentWord) {
         if (n == 0) {
             System.out.println(currentWord);
         } else {
-            for (int i = 0; i < syllables.length; i++) {
-                language(n - 1, syllables, currentWord + syllables[i]);
+            for (int i = 0; i < inp.length; i++) {
+                if (currentWord.contains(inp[i]) == false) {
+                    permute(n - 1, inp, currentWord + inp[i]);
+                }
             }
         }
     }
