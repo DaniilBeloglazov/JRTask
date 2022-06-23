@@ -1,9 +1,10 @@
-package com.lvl2tasks.tsk1;
+package com.lvl2tasks.tsk8;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.junit.Assert.assertEquals;
 
 public class Testing {
@@ -23,7 +24,7 @@ public class Testing {
     }
     @Test
     public void test1() {
-        Solution.printString("k-perogk");
-        assertEquals("k-perogk", outContent.toString());
+        Solution.sum10();
+        assertEquals("1\n3\n6\n10\n15\n21\n28\n36\n45\n55\n", outContent.toString());
     }
 }

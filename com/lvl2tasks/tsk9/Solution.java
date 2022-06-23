@@ -4,8 +4,7 @@ public class Solution {
     public static void main(String[] args){
         writeToConsole("Hiwbe");
     }
-    public static boolean writeToConsole(String s){
-        System.out.println("printing: " + s);
-        return true;
+    public static void writeToConsole(String s){
+        System.out.print("printing: " + s);
     }
 }

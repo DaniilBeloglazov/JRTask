@@ -1,9 +1,11 @@
-package com.lvl2tasks.tsk1;
+package com.lvl2tasks.tsk5;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
 import static org.junit.Assert.assertEquals;
 
 public class Testing {
@@ -23,7 +25,7 @@ public class Testing {
     }
     @Test
     public void test1() {
-        Solution.printString("k-perogk");
-        assertEquals("k-perogk", outContent.toString());
+        Solution.outPrnt();
+        assertEquals("850", outContent.toString());
     }
 }

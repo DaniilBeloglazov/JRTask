@@ -1,19 +1,30 @@
 package com.lvl2tasks.tsk9;
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.Assert.assertEquals;
 
 public class Testing {
-    @Test
-    public void test1(){
-        assertEquals(true,Solution.writeToConsole("Hello"));
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
     }
     @Test
-    public void test2(){
-        assertEquals(true,Solution.writeToConsole("Bye"));
-    }
-    @Test
-    public void test3(){
-        assertEquals(true,Solution.writeToConsole("CYA"));
+    public void test1() {
+        Solution.writeToConsole("Frog");
+        assertEquals("printing: Frog", outContent.toString());
     }
 }

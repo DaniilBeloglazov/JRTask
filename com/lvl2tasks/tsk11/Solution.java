@@ -1,13 +1,16 @@
 package com.lvl2tasks.tsk11;
-
 public class Solution {
     public static void main(String[] args){
-        String a = "Мама", b = "Мыла", c = "Раму";
-        System.out.println(a + b + c);
-        System.out.println(a + c + b);
-        System.out.println(b + a + c);
-        System.out.println(b + c + a);
-        System.out.println(c + b + a);
-        System.out.println(c + a + b);
+        String[] test = { "Мама", "Мыла", "Раму" };
+        language(3, test, "");
+    }
+    private static void language(final int n, final String[] syllables, final String currentWord) { // example of N = 3
+        if (n == 0) {
+            System.out.println(currentWord);
+        } else {
+            for (int i = 0; i < syllables.length; i++) {
+                language(n - 1, syllables, currentWord + syllables[i]);
+            }
+        }
     }
 }
