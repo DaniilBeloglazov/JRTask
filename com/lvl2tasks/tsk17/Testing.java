@@ -1,10 +1,9 @@
-package com.lvl2tasks.tsk11;
+package com.lvl2tasks.tsk17;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
-
 public class Testing {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -12,11 +11,14 @@ public class Testing {
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
-    public String[] inpS = {"Мама", "Мыла", "Раму"};
     @Test
     public void test1() {
-        Solution.permute(3, inpS,"");
-        assertEquals("МамаМылаРаму\nМамаРамуМыла\nМылаМамаРаму\nМылаРамуМама\nРамуМамаМыла\nРамуМылаМама\n", outContent.toString());
+        Solution.inPS("Вася",100000,5);
+        assertEquals("Вася получает 100000 через 5 лет.", outContent.toString());
     }
-
+    @Test
+    public void test2() {
+        Solution.inPS("Сергей",129504383,12);
+        assertEquals("Сергей получает 129504383 через 12 лет.", outContent.toString());
+    }
 }

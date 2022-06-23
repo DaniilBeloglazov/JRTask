@@ -1,4 +1,4 @@
-package com.lvl2tasks.tsk11;
+package com.lvl2tasks.tsk14;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
@@ -12,11 +12,10 @@ public class Testing {
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
-    public String[] inpS = {"Мама", "Мыла", "Раму"};
     @Test
     public void test1() {
-        Solution.permute(3, inpS,"");
-        assertEquals("МамаМылаРаму\nМамаРамуМыла\nМылаМамаРаму\nМылаРамуМама\nРамуМамаМыла\nРамуМылаМама\n", outContent.toString());
+        Solution.outPr();
+        assertEquals("It's Windows path: \"C:\\Program Files\\Java\\jdk1.7.0\\bin\"\n" +
+                "It's Java string: \"C:\\\\Program Files\\\\Java\\\\jdk1.7.0\\\\bin\\\"", outContent.toString());
     }
-
 }
