@@ -5,7 +5,7 @@ public class Solution {
     public void setName(String name){
         this.name = name;
     }
-    public void getPrivateName(){
+    public void printPrivateName(){
         System.out.print(name);
     }
 }

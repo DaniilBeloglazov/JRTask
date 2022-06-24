@@ -15,7 +15,7 @@ public class Testing {
     public void test1() {
         Solution meth = new Solution();
         meth.setName("Viktor");
-        meth.getPrivateName();
+        meth.printPrivateName();
         assertEquals("Viktor", outContent.toString());
     }
 }

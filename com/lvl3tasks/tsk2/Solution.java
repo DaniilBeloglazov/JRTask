@@ -5,8 +5,8 @@ public class Solution {
         addPrice(25);
     }
     public static int applesPrice;
-    public static void addPrice(int applesPrice){
-        Solution.applesPrice += applesPrice;
+    public static void addPrice(int price){
+        applesPrice += price;
         System.out.print(applesPrice);
     }
 

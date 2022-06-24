@@ -16,4 +16,9 @@ public class Testing {
         Solution.addPrice(25);
         assertEquals("25", outContent.toString());
     }
+    @Test
+    public void test2() {
+        Solution.addPrice(45);
+        assertEquals("70", outContent.toString());
+    }
 }

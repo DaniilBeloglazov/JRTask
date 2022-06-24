@@ -24,6 +24,4 @@ public class Testing {
         assertEquals(12,Solution.terrans.length, 0);
         assertEquals(true,Solution.unic(Solution.terrans));
     }
-
-
 }
