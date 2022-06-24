@@ -6,13 +6,10 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 public class Testing {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
-
     @Test
     public void test1() {
         Solution.setCatsCount(245);
