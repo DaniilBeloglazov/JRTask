@@ -7,11 +7,9 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 public class Testing {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    // Создает выходной поток массива байтов , буфер
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
-        //  System.setOut
     }
     @After
     public void restoreCatsCount() {
