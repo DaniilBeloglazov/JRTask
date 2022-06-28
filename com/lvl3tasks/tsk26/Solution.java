@@ -1,4 +1,4 @@
-package com.lvl3tasks.tsk27;
+package com.lvl3tasks.tsk26;
 
 public class Solution {
     public static final String whichDig(int a){
