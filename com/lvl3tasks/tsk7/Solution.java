@@ -5,7 +5,7 @@ public class Solution {
         Cat.addCats(46);
         System.out.print(Cat.catsCount);
     }
-    public static class Cat{
+    static class Cat{
        public static int catsCount;
        public static void addCats(int numOfCats){
            catsCount += numOfCats;
