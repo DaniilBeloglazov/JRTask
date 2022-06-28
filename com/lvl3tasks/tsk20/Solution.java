@@ -16,8 +16,7 @@ public class Solution {
             add(b);
             add(c);
         }};
-        Collections.sort(arr);
-        Collections.reverse(arr);
+        Collections.sort(arr, Collections.reverseOrder());
         for (var now : arr){
             System.out.print(now + " ");
         }

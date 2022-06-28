@@ -18,22 +18,22 @@ public class SolutionTest {
 
     @Test
     public void test1() {
-        Solution.printDiffNum(1,4,4);
+        System.out.print(Solution.getDiffNum(1,4,4));
         assertEquals("1", outContent.toString());
     }
     @Test
     public void test2() {
-        Solution.printDiffNum(4,4,1);
-        assertEquals("1", outContent.toString());
+        System.out.print(Solution.getDiffNum(4,4,1));
+        assertEquals("3", outContent.toString());
     }
     @Test
     public void test3() {
-        Solution.printDiffNum(4,1,4);
-        assertEquals("1", outContent.toString());
+        System.out.print(Solution.getDiffNum(4,1,4));
+        assertEquals("2", outContent.toString());
     }
     @Test
     public void test4() {
-        Solution.printDiffNum(4,4,4);
-        assertEquals("", outContent.toString());
+        System.out.print(Solution.getDiffNum(4,4,4));
+        assertEquals("0", outContent.toString());
     }
 }

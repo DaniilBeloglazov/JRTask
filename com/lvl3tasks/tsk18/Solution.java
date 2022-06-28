@@ -9,13 +9,6 @@ public class Solution {
         Scanner console = new Scanner(System.in);
         int a = console.nextInt();
         int b = console.nextInt();
-        printMin(a,b);
-    }
-    static final void printMin(int a, int b){
-        HashSet<Integer> set = new HashSet<>();
-        set.add(a);
-        set.add(b);
-        Iterator<Integer> it = set.iterator();
-        System.out.print(it.next());
+        System.out.print(Math.min(a, b));
     }
 }

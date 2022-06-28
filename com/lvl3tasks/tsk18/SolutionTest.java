@@ -16,17 +16,17 @@ public class SolutionTest {
     }
     @Test
     public void test1(){
-        Solution.printMin(4,4);
+        System.out.print(Math.min(4, 4));
         assertEquals("4", outContent.toString());
     }
     @Test
     public void test2(){
-        Solution.printMin(4,6);
+        System.out.print(Math.min(4, 6));
         assertEquals("4", outContent.toString());
     }
     @Test
     public void test3(){
-        Solution.printMin(6,4);
+        System.out.print(Math.min(6, 4));
         assertEquals("4", outContent.toString());
     }
 
