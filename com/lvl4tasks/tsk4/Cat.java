@@ -1,7 +1,7 @@
 package com.lvl4tasks.tsk4;
 
 
-public class Cat{
+class Cat{
     String name;
     int strength;
     int age;
