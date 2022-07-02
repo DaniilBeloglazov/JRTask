@@ -1,6 +1,6 @@
 package com.lvl4tasks.tsk3;
 
-public class Dog {
+class Dog {
     private String name;
     private int age;
     public String getName(){

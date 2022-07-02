@@ -1,4 +1,4 @@
-package com;
+package com.lvl7tasks.tsk23;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 
 
-public class SolutionTestPattern {
+public class SolutionTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     @Before
     public void setUpStreams() {
@@ -15,7 +15,8 @@ public class SolutionTestPattern {
     }
     @Test
     public void test1(){
-
-        assertEquals("", outContent.toString());
+        String s = "mama mila ramu";
+        Solution.toUpperCFirstLet(s);
+        assertEquals("Mama Mila Ramu", outContent.toString());
     }
 }
