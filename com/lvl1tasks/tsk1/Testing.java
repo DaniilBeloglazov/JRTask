@@ -7,6 +7,7 @@ public class Testing {
 
     @Test
     public void shouldReturnCorrectValue() {
+
         assertEquals(1, Solution.getMetreFromCentimetre(100), 0);
     }
 
