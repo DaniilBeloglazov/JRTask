@@ -17,11 +17,11 @@ public class SolutionTest {
     public void test1(){
         Solution.main(null);
         assertEquals("java.base/java.lang.Thread.getStackTrace(Thread.java:1610)\n" +
-                "com.lvl5tasks.tsk16.Solution.method4(Cat.java:24)\n" +
-                "com.lvl5tasks.tsk16.Solution.method3(Cat.java:19)\n" +
-                "com.lvl5tasks.tsk16.Solution.method2(Cat.java:15)\n" +
-                "com.lvl5tasks.tsk16.Solution.method1(Cat.java:11)\n" +
-                "com.lvl5tasks.tsk16.Solution.main(Cat.java:7)\n" +
+                "com.lvl5tasks.tsk16.Solution.method4(Human.java:24)\n" +
+                "com.lvl5tasks.tsk16.Solution.method3(Human.java:19)\n" +
+                "com.lvl5tasks.tsk16.Solution.method2(Human.java:15)\n" +
+                "com.lvl5tasks.tsk16.Solution.method1(Human.java:11)\n" +
+                "com.lvl5tasks.tsk16.Solution.main(Human.java:7)\n" +
                 "com.lvl5tasks.tsk16.SolutionTest.test1(SolutionTest.java:18)\n" +
                 "java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n" +
                 "java.base/java.lang.reflect.Method.invoke(Method.java:577)\n" +
@@ -47,16 +47,16 @@ public class SolutionTest {
                 "com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)\n" +
                 "com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)\n" +
                 "java.base/java.lang.Thread.getStackTrace(Thread.java:1610)\n" +
-                "com.lvl5tasks.tsk16.Solution.method4(Cat.java:24)\n" +
-                "com.lvl5tasks.tsk16.Solution.method3(Cat.java:19)\n" +
-                "com.lvl5tasks.tsk16.Solution.method2(Cat.java:15)\n" +
-                "com.lvl5tasks.tsk16.Solution.method1(Cat.java:11)\n" +
-                "com.lvl5tasks.tsk16.Solution.main(Cat.java:7)\n" +
-                "com.lvl5tasks.tsk16.Solution.method4(Cat.java:28)\n" +
-                "com.lvl5tasks.tsk16.Solution.method3(Cat.java:19)\n" +
-                "com.lvl5tasks.tsk16.Solution.method2(Cat.java:15)\n" +
-                "com.lvl5tasks.tsk16.Solution.method1(Cat.java:11)\n" +
-                "com.lvl5tasks.tsk16.Solution.main(Cat.java:7)\n" +
+                "com.lvl5tasks.tsk16.Solution.method4(Human.java:24)\n" +
+                "com.lvl5tasks.tsk16.Solution.method3(Human.java:19)\n" +
+                "com.lvl5tasks.tsk16.Solution.method2(Human.java:15)\n" +
+                "com.lvl5tasks.tsk16.Solution.method1(Human.java:11)\n" +
+                "com.lvl5tasks.tsk16.Solution.main(Human.java:7)\n" +
+                "com.lvl5tasks.tsk16.Solution.method4(Human.java:28)\n" +
+                "com.lvl5tasks.tsk16.Solution.method3(Human.java:19)\n" +
+                "com.lvl5tasks.tsk16.Solution.method2(Human.java:15)\n" +
+                "com.lvl5tasks.tsk16.Solution.method1(Human.java:11)\n" +
+                "com.lvl5tasks.tsk16.Solution.main(Human.java:7)\n" +
                 "com.lvl5tasks.tsk16.SolutionTest.test1(SolutionTest.java:18)\n" +
                 "java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n" +
                 "java.base/java.lang.reflect.Method.invoke(Method.java:577)\n" +
