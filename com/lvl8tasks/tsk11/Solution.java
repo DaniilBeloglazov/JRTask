@@ -5,7 +5,7 @@ import java.util.HashMap;
 class Solution {
     static void except() throws Exception{
         try{
-            HashMap<String, String> map = new HashMap<String, String>(null);
+            HashMap<String, String> map = new HashMap<String, String>();
             map.put(null, null);
             map.remove(null);
         } catch (NullPointerException e){
