@@ -17,8 +17,8 @@ public class SolutionTest {
     public void test1(){
         Solution.main(null);
         assertEquals("java.lang.ArithmeticException: / by zero\n" +
-                "\tat com.lvl8tasks.tsk19.Solution.divisionByZero(Solution.java:12)\n" +
-                "\tat com.lvl8tasks.tsk19.Solution.main(Solution.java:6)\n" +
+                "\tat com.lvl8tasks.tsk19.Solution.divisionByZero(Kata.java:12)\n" +
+                "\tat com.lvl8tasks.tsk19.Solution.main(Kata.java:6)\n" +
                 "\tat com.lvl8tasks.tsk19.SolutionTest.test1(SolutionTest.java:18)\n" +
                 "\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\n" +
                 "\tat java.base/java.lang.reflect.Method.invoke(Method.java:577)\n" +
