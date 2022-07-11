@@ -1,4 +1,4 @@
-package CodeWars.Task7;
+package RequiredTasks._6kyu.Task7;
 
 public class SpinWords {
     public static void main(String[] args) {

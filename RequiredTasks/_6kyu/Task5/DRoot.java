@@ -1,4 +1,4 @@
-package CodeWars.Task5;
+package RequiredTasks._6kyu.Task5;
 
 public class DRoot {
     public static int digital_root(int n) {

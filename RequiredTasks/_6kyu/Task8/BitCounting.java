@@ -1,4 +1,4 @@
-package CodeWars.Task8;
+package RequiredTasks._6kyu.Task8;
 
 public class BitCounting {
 

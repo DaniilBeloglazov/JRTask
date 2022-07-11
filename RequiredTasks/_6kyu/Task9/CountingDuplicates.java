@@ -1,4 +1,4 @@
-package CodeWars.Task9;
+package RequiredTasks._6kyu.Task9;
 
 import java.util.HashMap;
 

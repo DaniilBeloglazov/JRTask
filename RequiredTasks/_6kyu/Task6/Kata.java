@@ -1,4 +1,4 @@
-package CodeWars.Task6;
+package RequiredTasks._6kyu.Task6;
 
 import java.util.ArrayList;
 import java.util.Arrays;
