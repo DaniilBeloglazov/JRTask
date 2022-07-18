@@ -18,27 +18,38 @@ public class SomeClass<T> implements List<T> {
         size++;
     }
     private void linkBefore(T e, Node<T> node){
+        final Node<T> prev = node.previous;
         final Node<T> newNode = new Node<>(node.previous, e, node);
-        if (node.previous != null)
-            node.previous.next = newNode;
         node.previous = newNode;
+        if (prev == null){
+            first = newNode;
+        } else {
+            prev.next = newNode;
+        }
         size++;
     }
+    private void unlinkNode(Node<T> node){
+        final Node<T> next = node.next;
+        final Node<T> prev = node.previous;
 
-    private void deleteNode(Node<T> node){
-        if (size == 1){
-            first = null;
-            last = null;
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            node.previous = null;
         }
-        if (node.previous != null)
-            node.previous.next = node.next;
-        if (node.next != null)
-            node.next.previous = node.previous;
-        node = null;
+
+        if (next == null) {
+            last = prev;
+        } else {
+            next.previous = prev;
+            node.next = null;
+        }
+
+        node.element = null;
         size--;
     }
-
-    Node<T> node(int index) {
+    private Node<T> node(int index) {
         if (index < (size >> 1)) { // equal div 2
             Node<T> x = first;
             for (int i = 0; i < index; i++)
@@ -107,13 +118,19 @@ public class SomeClass<T> implements List<T> {
 
     @Override
     public boolean remove(Object o) {
-        Node<T> current = this.first;
-        while (current != null) {
-            if (o.equals(current.element)) {
-                deleteNode(current);
-                return true;
-            } else {
-                current = current.next;
+        if (o == null) {
+            for (Node<T> x = first; x != null; x = x.next) {
+                if (x.element == null) {
+                    unlinkNode(x);
+                    return true;
+                }
+            }
+        } else {
+            for (Node<T> x = first; x != null; x = x.next) {
+                if (o.equals(x.element)) {
+                    unlinkNode(x);
+                    return true;
+                }
             }
         }
         return false;
@@ -159,8 +176,7 @@ public class SomeClass<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        Node<T> x = node(index);
-        return x.element;
+        return node(index).element;
     }
 
     @Override

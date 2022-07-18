@@ -1,5 +1,6 @@
 package RequiredTasks.OOP.Task1;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Test {
@@ -11,9 +12,11 @@ public class Test {
             add(5);
             add(6);
         }};
-        list.add(4, 132);
-        list.add(0, 69);
-        list.add(2, 15);
-        System.out.println(list.get(4) + " " + list.get(0) + " " + list.get(2));
+        list.add(0, 123);
+        var check = list.get(0);
+        check = 1488;
+        for (var now : list){
+            System.out.println(now);
+        }
     }
 }
