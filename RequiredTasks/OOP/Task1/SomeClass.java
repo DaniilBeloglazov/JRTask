@@ -1,12 +1,16 @@
 package RequiredTasks.OOP.Task1;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class SomeClass<T> implements List<T> {
     private Node<T> first;
     private Node<T> last;
-    private int size;
+    private int size = 0;
 
+    /**
+     * link specified element to end of list
+     */
     private void linkLast(T e) {
         final Node<T> l = last; // link on old last
         final Node<T> newNode = new Node<>(l, e, null); // creating new Node for link
@@ -17,21 +21,41 @@ public class SomeClass<T> implements List<T> {
             l.next = newNode;
         size++;
     }
-    private void linkBefore(T e, Node<T> node){
+
+    /**
+     * link node with specified element before specified node.
+     */
+    private void linkBefore(T e, Node<T> node) {
         final Node<T> prev = node.previous;
         final Node<T> newNode = new Node<>(node.previous, e, node);
         node.previous = newNode;
-        if (prev == null){
+        if (prev == null) {
             first = newNode;
         } else {
             prev.next = newNode;
         }
         size++;
     }
-    private void unlinkNode(Node<T> node){
+
+    private void linkAfter(T e, Node<T> node) {
+        final Node<T> next = node.next;
+        final Node<T> newNode = new Node<>(node, e, node.next);
+        node.next = newNode;
+        if (next == null) {
+            last = newNode;
+        } else {
+            next.next = newNode;
+        }
+        size++;
+    }
+
+    /**
+     * unlink specified node and link prev + next
+     */
+    private T unlinkNode(Node<T> node) {
         final Node<T> next = node.next;
         final Node<T> prev = node.previous;
-
+        final T element = node.element;
         if (prev == null) {
             first = next;
         } else {
@@ -45,10 +69,14 @@ public class SomeClass<T> implements List<T> {
             next.previous = prev;
             node.next = null;
         }
-
         node.element = null;
         size--;
+        return element;
     }
+
+    /**
+     * Return node at specified index.
+     */
     private Node<T> node(int index) {
         if (index < (size >> 1)) { // equal div 2
             Node<T> x = first;
@@ -80,18 +108,19 @@ public class SomeClass<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            int index = 0;
+        return new Iterator<>() {
+            private Node<T> i = first;
+
             @Override
             public boolean hasNext() {
-                return index < size;
+                return i != null;
             }
 
             @Override
             public T next() {
-                var answ = get(index);
-                index++;
-                return answ;
+                final Node<T> answ = i;
+                i = i.next;
+                return answ.element;
             }
         };
     }
@@ -99,7 +128,7 @@ public class SomeClass<T> implements List<T> {
     @Override
     public Object[] toArray() {
         Object[] arr = new Object[size];
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             arr[i] = get(i);
         }
         return arr;
@@ -116,8 +145,12 @@ public class SomeClass<T> implements List<T> {
         return true;
     }
 
+    /**
+     * remove first occurrence of specified object.
+     */
     @Override
     public boolean remove(Object o) {
+        // if we search null object
         if (o == null) {
             for (Node<T> x = first; x != null; x = x.next) {
                 if (x.element == null) {
@@ -125,6 +158,7 @@ public class SomeClass<T> implements List<T> {
                     return true;
                 }
             }
+            // if we search not null object
         } else {
             for (Node<T> x = first; x != null; x = x.next) {
                 if (o.equals(x.element)) {
@@ -138,27 +172,47 @@ public class SomeClass<T> implements List<T> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        for (var now : c) {
+            if (!this.contains(now))
+                return false;
+        }
+        return true;
     }
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        for (var now : c) {
+            this.add(now);
+        }
+        return true;
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
+        for (var now : c) {
+            this.add(index, now);
+            index++;
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        for (Object now : c) {
+            while (this.contains(now)) {
+                this.remove(now);
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        for (var obj : this) { // go for all elements
+            if (!c.contains(obj)) // if c not contains obj
+                this.remove(obj); // delete obj in our List
+        }
+        return true;
     }
 
     @Override
@@ -197,31 +251,181 @@ public class SomeClass<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        return unlinkNode(node(index));
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        int index = 0;
+        // if we search null object
+        if (o == null) {
+            for (Node<T> x = first; x != null; x = x.next) {
+                if (x.element == null)
+                    return index;
+                index++;
+            }
+            // if we search not null object
+        } else {
+            for (Node<T> x = first; x != null; x = x.next) {
+                if (o.equals(x.element))
+                    return index;
+                index++;
+            }
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        // Search begins in the end of the list
+        int index = size;
+        // null search
+        if (o == null) {
+            for (Node<T> x = last; x != null; x = x.previous) {
+                index--;
+                if (x.element == null)
+                    return index;
+            }
+            // not null search
+        } else {
+            for (Node<T> x = last; x != null; x = x.previous) {
+                index--;
+                if (o.equals(x.element))
+                    return index;
+            }
+        }
+        return -1;
     }
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;
+        return new ListIterator<T>() {
+            private int nextIndex = 0;
+            private Node<T> next = node(nextIndex);
+            private Node<T> lastReturned = null; // last returned
+
+            public boolean hasNext() {
+                return nextIndex < size;
+            }
+
+            public T next() {
+                lastReturned = next;
+                next = next.next;
+                nextIndex++;
+                return lastReturned.element;
+            }
+
+            public boolean hasPrevious() {
+                return nextIndex > 0;
+            }
+
+            public T previous() {
+                lastReturned = next = (next == null) ? last : next.previous;
+                nextIndex--;
+                return lastReturned.element;
+            }
+
+            public int nextIndex() {
+                return nextIndex;
+            }
+
+            public int previousIndex() {
+                return nextIndex - 1;
+            }
+
+            public void remove() {
+                Node<T> lastNext = lastReturned.next;
+                unlinkNode(lastReturned);
+                if (next == lastReturned)
+                    next = lastNext;
+                else
+                    nextIndex--;
+                lastReturned = null;
+            }
+
+            public void set(T e) {
+                lastReturned.element = e;
+            }
+
+            public void add(T e) {
+                lastReturned = null;
+                if (next == null)
+                    linkLast(e);
+                else
+                    linkBefore(e, next);
+                nextIndex++;
+            }
+        };
     }
 
     @Override
     public ListIterator<T> listIterator(int index) {
-        return null;
+        return new ListIterator<T>() {
+
+            private int nextIndex = index;
+            private Node<T> next = (index == size) ? null : node(index);
+            private Node<T> lastReturned = null; // last returned
+
+            public boolean hasNext() {
+                return nextIndex < size;
+            }
+
+            public T next() {
+                lastReturned = next;
+                next = next.next;
+                nextIndex++;
+                return lastReturned.element;
+            }
+
+            public boolean hasPrevious() {
+                return nextIndex > 0;
+            }
+
+            public T previous() {
+                lastReturned = next = (next == null) ? last : next.previous;
+                nextIndex--;
+                return lastReturned.element;
+            }
+
+            public int nextIndex() {
+                return nextIndex;
+            }
+
+            public int previousIndex() {
+                return nextIndex - 1;
+            }
+
+            public void remove() {
+                Node<T> lastNext = lastReturned.next;
+                unlinkNode(lastReturned);
+                if (next == lastReturned)
+                    next = lastNext;
+                else
+                    nextIndex--;
+                lastReturned = null;
+            }
+
+            public void set(T e) {
+                lastReturned.element = e;
+            }
+
+            public void add(T e) {
+                lastReturned = null;
+                if (next == null)
+                    linkLast(e);
+                else
+                    linkBefore(e, next);
+                nextIndex++;
+            }
+        };
     }
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        final List<T> sub = new SomeClass<>();
+        for (int i = fromIndex; i < toIndex; i++) {
+            sub.add(node(i).element);
+        }
+        return sub;
     }
 }
