@@ -1,6 +1,6 @@
 package RequiredTasks.OOP.Task1;
 
-public class Node <T>{
+class Node <T>{
     T element;
     Node<T> next;
     Node<T> previous;
