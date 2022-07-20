@@ -1,13 +1,21 @@
 package RequiredTasks.OOP.Task1;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 public class SomeClass<T> implements List<T> {
+    private static class Node <T>{
+        T element;
+        Node<T> next;
+        Node<T> previous;
+        Node(Node<T> previous, T element, Node<T> next){
+            this.element = element;
+            this.next = next;
+            this.previous = previous;
+        }
+    }
     private Node<T> first;
     private Node<T> last;
     private int size = 0;
-
     /**
      * link specified element to end of list
      */
