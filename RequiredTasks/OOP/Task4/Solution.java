@@ -29,7 +29,7 @@ String[] newArray =  (String[]) filter(array, new Filter() {
 public class Solution {
     public static void main(String[] args) {
         String[] str = new String[]{"a","s","d","v","f","g"};
-        var check = filter(str, obj -> (int) obj % 2 == 0);
+        var check = filter(str, obj -> !obj.equals("s"));
         for (var now : check){
             System.out.println(now);
         }
