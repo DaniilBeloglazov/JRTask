@@ -1,0 +1,21 @@
+package JavaRush.lvl6tasks.tsk23;
+
+import org.junit.Before;
+import org.junit.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.Assert.*;
+
+
+public class SolutionTest {
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+    @Test
+    public void test1() throws InterruptedException {
+        Solution.boom();
+        assertEquals("30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 Boom", outContent.toString());
+    }
+}
