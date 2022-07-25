@@ -1,4 +1,4 @@
-package OptionalTask._4kyu;
+package OptionalTask._4kyu._1;
 
 import java.util.*;
 
