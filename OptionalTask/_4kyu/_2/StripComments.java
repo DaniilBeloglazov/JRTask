@@ -1,6 +1,5 @@
 package OptionalTask._4kyu._2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -9,26 +8,19 @@ import java.util.Arrays;
  */
 public class StripComments {
     public static void main(String[] args) {
-        var check = stripComments("a #b\nc\nd $e f g", new String[] { "#", "$" });
+        var check = stripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new String[]{"#", "!"});
         System.out.println(check);
     }
+
     public static String stripComments(String text, String[] commentSymbols) {
-        String regex = "(";
-        String checkSymb = "?.*^$+-";
-        for (var now : commentSymbols){
-            if (!checkSymb.contains(now))
-                regex += now + "|";
-            else
-                regex += "\\" + now + "|";
+        String[] str = text.split("\n");
+        String symb = Arrays.toString(commentSymbols).replaceAll("[ ,]", "");
+        String regex = "[ ]*(" + symb + ".*)?$";
+        //System.out.println(regex);
+        String answer = "";
+        for (var now : str) {
+            answer += now.replaceAll(regex, "") + "\n";
         }
-        regex = regex.substring(0, regex.length() - 1) + ")" + ".+?(\\n|$)";
-        // System.out.println(regex);
-        String[] answer = text.split(regex);
-        String check = "";
-        for (int i = 0; i < answer.length - 1; i++){
-            check += answer[i].trim() + "\n";
-        }
-        check += answer[answer.length - 1].trim();
-        return check; // "apples, pears\ngrapes\nbananas"
+        return answer.substring(0, answer.length() - 1);
     }
 }
