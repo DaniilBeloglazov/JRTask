@@ -16,7 +16,7 @@ public class StripComments {
         String[] str = text.split("\n");
         String symb = Arrays.toString(commentSymbols).replaceAll("[ ,]", "");
         String regex = "[ ]*(" + symb + ".*)?$";
-        //System.out.println(regex);
+        System.out.println(regex);
         String answer = "";
         for (var now : str) {
             answer += now.replaceAll(regex, "") + "\n";
