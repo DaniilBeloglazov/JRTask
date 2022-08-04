@@ -1,9 +1,6 @@
 package Multithreading._7;
 
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Main {
     static volatile Long check = 0L;
