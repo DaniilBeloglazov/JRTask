@@ -1,4 +1,4 @@
 package Stepik_Generics._1;
 
-public class Apples {
+public class Apple {
 }
