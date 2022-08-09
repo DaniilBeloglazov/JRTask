@@ -8,23 +8,23 @@ public class Main {
     /**
     *Separator depending on OS
      **/
-    final static String SEPARATOR = System.getProperty("file.separator");
+    private final static String SEPARATOR = System.getProperty("file.separator");
     /**
      *Calculate deep depending on count of dots
      **/
-    public static long countDeep(String str) {
+    private static long countDeep(String str) {
         return str.chars().filter(obj -> obj == '.').count();
     }
     /**
      *Gets name from name containig info about deep
      **/
-    public static String getName(String str) {
+    private static String getName(String str) {
         return str.replaceAll("\\.", "");
     }
     /**
      *Trims pathDir depending on last and current deep
      **/
-    public static void customTrim(StringBuilder pathDir, int lastDeep, String dirWithDots) {
+    private static void customTrim(StringBuilder pathDir, int lastDeep, String dirWithDots) {
         for (int i = 0; i <= lastDeep - countDeep(dirWithDots); i++) {
             pathDir.delete(pathDir.lastIndexOf(SEPARATOR), pathDir.length());
         }
@@ -32,13 +32,13 @@ public class Main {
     /**
      *Adding dir into pathDir with Separator
      **/
-    public static void addDirWithSep(StringBuilder pathDir, String dirWithDots) {
+    private static void addDirWithSep(StringBuilder pathDir, String dirWithDots) {
         pathDir.append(SEPARATOR).append(getName(dirWithDots));
     }
     /**
      *Instantly creating dirs depending on entering pathDir
      **/
-    public static void createDirsNow(StringBuilder pathDir) {
+    private static void createDirsNow(StringBuilder pathDir) {
         new File(pathDir.toString()).mkdirs();
     }
     /**
@@ -61,13 +61,11 @@ public class Main {
                 addDirWithSep(pathDir, hierarchy[i]);
                 continue;
             }
-            //TODO 1ый - если глубина увеличивается я должен продолжать приписывать
             if (countDeep(hierarchy[i]) > lastDeep) {
                 addDirWithSep(pathDir, hierarchy[i]);
                 lastDeep = (int) countDeep(hierarchy[i]);
                 continue;
             }
-            //TODO 2ой - если глубина уменьшается я должен создать файл по  pathDir и уменьшить pathDir на разницу в deep
             if (countDeep(hierarchy[i]) < lastDeep) {
                 //System.out.println(pathDir);
                 createDirsNow(pathDir);
