@@ -52,7 +52,6 @@ public class Main {
         StringBuilder pathDir = new StringBuilder(pathWhereCreate);
         int lastDeep = 0;
         for (int i = 0; i < hierarchy.length; i++) {
-            //TODO я записываю файл по pathDir, удаляю из pathDir последнюю папку
             if (countDeep(hierarchy[i]) == lastDeep) {
                 //System.out.println(pathDir);
                 createDirsNow(pathDir);
