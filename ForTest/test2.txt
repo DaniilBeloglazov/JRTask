@@ -1,0 +1,12 @@
+.data
+..lib
+...pip
+...chip
+.data2
+..examples
+..core
+.data3
+..build
+...core1
+...core2
+.remote

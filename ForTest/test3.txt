@@ -1,0 +1,9 @@
+.data
+..core1
+...coreinfo
+..core2
+...coreinfo
+..core3
+.data2
+..build
+...examples

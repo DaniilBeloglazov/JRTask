@@ -1,14 +1,11 @@
 package RequiredInputOutputStream;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.Scanner;
 
-public class Main {
+public class FileSystem {
     /**
     *Separator depending on OS
      **/
@@ -49,17 +46,17 @@ public class Main {
      * Creates file system from an incoming hierarchy(dots type)
      * @param filename
      * A file with hierarchy of dirs with dots
-     * @param pathWhereCreate
+     * @param pathWhereToCreate
      * Path where to create file system
      **/
-    public static void createFileSystem(String filename, String pathWhereCreate) {
+    public static void create(String filename, String pathWhereToCreate) {
         try {
             Scanner console = new Scanner(new FileInputStream(filename));
             ArrayList<String> hierarchy = new ArrayList<>();
             while (console.hasNext()) {
                 hierarchy.add(console.nextLine());
             }
-            StringBuilder pathDir = new StringBuilder(pathWhereCreate);
+            StringBuilder pathDir = new StringBuilder(pathWhereToCreate);
             int lastDeep = 0;
             for (String s : hierarchy) {
                 if (countDeep(s) <= lastDeep) {
@@ -75,10 +72,18 @@ public class Main {
             e.printStackTrace();
         }
     }
+    public static void delete(String path) {
+        File fileSystem = new File(path);
+        for (File dir : fileSystem.listFiles()) {
+            if (!dir.delete()){
+                delete(dir.getPath());
+                dir.delete();
+            }
+        }
 
+    }
     public static void main(String[] args) {
         String currentPath = "White/RequiredInputOutputStream";
-        createFileSystem("main.txt", currentPath);
+        create("main.txt", currentPath);
     }
-
 }
