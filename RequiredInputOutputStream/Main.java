@@ -1,8 +1,12 @@
 package RequiredInputOutputStream;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
     /**
@@ -12,8 +16,8 @@ public class Main {
     /**
      *Calculate deep depending on count of dots
      **/
-    private static long countDeep(String str) {
-        return str.chars().filter(obj -> obj == '.').count();
+    private static int countDeep(String str) {
+        return (int) (str.chars().filter(obj -> obj == '.').count());
     }
     /**
      *Gets name from name containig info about deep
@@ -38,7 +42,7 @@ public class Main {
     /**
      *Instantly creating dirs depending on entering pathDir
      **/
-    private static void createDirsNow(StringBuilder pathDir) {
+    private static void createDirs(StringBuilder pathDir) {
         new File(pathDir.toString()).mkdirs();
     }
     /**
@@ -48,44 +52,25 @@ public class Main {
      * @param pathWhereCreate
      * Path where to create file system
      **/
-    public static void createDirs(String filename, String pathWhereCreate) {
-        // Reading hierarhy from @filename
-        try(InputStream inputStream = new FileInputStream("main.txt")) {
-            byte[] array = new byte[1024];
-            int count = inputStream.read(array);
-            StringBuilder builder = new StringBuilder();
-            while (count > 0) {
-                builder.append(new String(array, 0, count));
-                count = inputStream.read(array);
+    public static void createFileSystem(String filename, String pathWhereCreate) {
+        try {
+            Scanner console = new Scanner(new FileInputStream(filename));
+            ArrayList<String> hierarchy = new ArrayList<>();
+            while (console.hasNext()) {
+                hierarchy.add(console.nextLine());
             }
-            String[] hierarchy = builder.toString().replaceAll("\r", "").split("\n");
-            // Starting create file System
             StringBuilder pathDir = new StringBuilder(pathWhereCreate);
             int lastDeep = 0;
-            for (int i = 0; i < hierarchy.length; i++) {
-                if (countDeep(hierarchy[i]) == lastDeep) {
-                    //System.out.println(pathDir);
-                    createDirsNow(pathDir);
-                    customTrim(pathDir, lastDeep, hierarchy[i]);
-                    lastDeep = (int) countDeep(hierarchy[i]);
-                    addDirWithSep(pathDir, hierarchy[i]);
-                    continue;
+            for (String s : hierarchy) {
+                if (countDeep(s) <= lastDeep) {
+                    createDirs(pathDir);
+                    customTrim(pathDir, lastDeep, s);
                 }
-                if (countDeep(hierarchy[i]) > lastDeep) {
-                    addDirWithSep(pathDir, hierarchy[i]);
-                    lastDeep = (int) countDeep(hierarchy[i]);
-                    continue;
-                }
-                if (countDeep(hierarchy[i]) < lastDeep) {
-                    //System.out.println(pathDir);
-                    createDirsNow(pathDir);
-                    customTrim(pathDir, lastDeep, hierarchy[i]);
-                    addDirWithSep(pathDir, hierarchy[i]);
-                    lastDeep = (int) countDeep(hierarchy[i]);
-                }
+                lastDeep = countDeep(s);
+                addDirWithSep(pathDir, s);
             }
-            //System.out.println(pathDir);
-            createDirsNow(pathDir);
+            createDirs(pathDir);
+            System.out.println("File system was created");
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -93,7 +78,7 @@ public class Main {
 
     public static void main(String[] args) {
         String currentPath = "White/RequiredInputOutputStream";
-        createDirs("main.txt", currentPath);
+        createFileSystem("main.txt", currentPath);
     }
 
 }
